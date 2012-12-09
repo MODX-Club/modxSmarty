@@ -1,0 +1,5 @@
+modxSmarty-0.0.1-beta
+=============================================================
+
+1. Created core
+2. Created plugin Smarty initialization and clearing cache
