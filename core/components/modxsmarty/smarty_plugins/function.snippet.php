@@ -9,13 +9,20 @@
 
 function smarty_function_snippet($params, & $smarty)
 {
-    if(!$name = $params['name']){return;}
+    if(!isset($params['name']) OR !$name = $params['name']){return;}
+    
     $modx = & $smarty->modx;
+    $modx->getParser(); 
+    $scriptProperties = array();
     
     if(isset($params['scriptProperties'])){
-        $scriptProperties = (array)$params['scriptProperties'];
-    }
-    else $scriptProperties = array();
+        $scriptProperties = $params['scriptProperties'];
+        // Check if String
+        if(is_string($params['scriptProperties'])){
+            $scriptProperties = $modx->parser->parseProperties($scriptProperties);
+        }
+    }  
+    
     $output = $modx->runSnippet($name, $scriptProperties);
     
     if(isset($params['parse']) && $params['parse'] == 'true'){

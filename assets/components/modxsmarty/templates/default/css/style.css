@@ -1,0 +1,21 @@
+.wrapper{
+    margin: 0 auto; 
+    min-width:1000px; 
+    max-width:1200px;
+}
+
+.header{
+    min-height: 100px;
+}
+
+.body{
+    min-height: 400px;
+}
+
+.footer{
+    min-height:100px;
+}
+
+div.block{
+    padding:0 0 20px;
+}

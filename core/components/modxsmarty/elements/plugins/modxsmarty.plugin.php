@@ -1,16 +1,18 @@
 <?php
 // Инициализируем Смарти
   
-$core_path = $modx->getOption('modxsmarty.core_path', $scriptProperties, $modx->getOption('core_path', null).'components/modxsmarty/');
-$template_dir = $modx->getOption('modxsmarty.template_dir', $scriptProperties, $core_path.'templates/');
-$template = $modx->getOption('modxsmarty.template', $scriptProperties, 'default');
+$core_path = $modx->getOption('modxSmarty.core_path', $scriptProperties, $modx->getOption('core_path', null).'components/modxsmarty/');
+$template_dir = $modx->getOption('modxSmarty.template_dir', $scriptProperties, $core_path.'templates/');
+$template = $modx->getOption('modxSmarty.template', $scriptProperties, 'default');
+$cache_dir = $modx->getOption('modxSmarty.cache_dir', $scriptProperties, $modx->getOption('core_path', null).'cache/modxsmarty/');
+$compile_dir = $modx->getOption('modxSmarty.compile_dir', $scriptProperties, "{$core_path}compiled/{$template}/");
 
 $config = array(
     'template_dir'      => $template_dir."{$template}/",
-    'compile_dir'       => $core_path.'compiled/',
-    'cache_dir'         => $core_path.'cache/',
-    'caching'           => $modx->getOption('modxsmarty.caching', $scriptProperties, false),
-    'cache_lifetime'    => $modx->getOption('modxsmarty.cache_lifetime', $scriptProperties, -1),
+    'compile_dir'       => $compile_dir,
+    'cache_dir'         => $cache_dir,
+    'caching'           => $modx->getOption('modxSmarty.caching', $scriptProperties, false),
+    'cache_lifetime'    => $modx->getOption('modxSmarty.cache_lifetime', $scriptProperties, -1),
 );
 
 switch($modx->event->name){

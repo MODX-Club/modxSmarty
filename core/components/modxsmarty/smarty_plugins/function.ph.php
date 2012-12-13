@@ -7,10 +7,10 @@
  */
 
 
-function smarty_function_config($params, & $smarty)
-{   
+function smarty_function_ph($params, & $smarty)
+{
     if(!isset($params['name']) OR !$name = $params['name']){return;}
-    return $smarty->modx->getOption($name, null);
+    return $smarty->modx->getPlaceholder($name);
 }
 
 ?>
