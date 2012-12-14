@@ -11,10 +11,10 @@ print '<pre>';
 require_once dirname(__FILE__). '/build.config.php';
 
 
-$modx= new modX();
+// $modx= new modX();
+//  $modx->initialize('mgr');
 
 
-$modx->initialize('mgr');
 $modx->setLogLevel(modX::LOG_LEVEL_INFO);
 $modx->setLogTarget('ECHO'); echo '<pre>'; flush();
 
@@ -24,6 +24,8 @@ $builder->createPackage(PKG_NAME_LOWER,PKG_VERSION,PKG_RELEASE);
 $builder->registerNamespace(PKG_NAME_LOWER,false,true,'{core_path}components/'.PKG_NAME_LOWER.'/');
 $modx->getService('lexicon','modLexicon');
 $modx->lexicon->load(PKG_NAME_LOWER.':properties');
+//print "dsdfsdf".$modx->context->key;
+//exit; 
 
 /* load action/menu */
 $attributes = array (
@@ -90,7 +92,7 @@ $attr = array(
 
 /* add plugins */
 $plugins = include $sources['data'].'transport.plugins.php';
-if (!is_array($plugins)) { $modx->log(modX::LOG_LEVEL_FATAL,'Adding plugins failed.'); } 
+if (!is_array($plugins)) { $modx->log(modX::LOG_LEVEL_ERROR,'Adding plugins failed.'); } 
 else{
     $category->addMany($plugins);
     $modx->log(modX::LOG_LEVEL_INFO,'Packaged in '.count($plugins).' plugins.'); flush();
@@ -107,14 +109,13 @@ $attributes= array(
     xPDOTransport::PRESERVE_KEYS => true,
     xPDOTransport::UPDATE_OBJECT => false,
 );
-if (!is_array($settings)) { $modx->log(modX::LOG_LEVEL_FATAL,'Adding settings failed.'); }
+if (!is_array($settings)) { $modx->log(modX::LOG_LEVEL_ERROR,'Adding settings failed.'); }
 foreach ($settings as $setting) {
     $vehicle = $builder->createVehicle($setting,$attributes);
     $builder->putVehicle($vehicle);
 }
 $modx->log(modX::LOG_LEVEL_INFO,'Packaged in '.count($settings).' system settings.'); flush();
 unset($settings,$setting,$attributes);
-
 
 
 /*  Create main Vehicle*/

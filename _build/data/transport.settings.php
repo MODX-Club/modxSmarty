@@ -48,9 +48,9 @@ $settings['modxSmarty.template']->fromArray(array(
 ),'',true,true);
 
 
-$settings['modxSmarty.active'] = $modx->newObject('modSystemSetting');
-$settings['modxSmarty.active']->fromArray(array(
-    'key' => 'modxSmarty.active',
+$settings['modxSmarty.caching'] = $modx->newObject('modSystemSetting');
+$settings['modxSmarty.caching']->fromArray(array(
+    'key' => 'modxSmarty.caching',
     'value' => '0',
     'xtype' => 'combo-boolean',
     'namespace' => 'modxsmarty',

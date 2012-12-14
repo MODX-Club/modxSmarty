@@ -1,5 +1,12 @@
+modxSmarty-0.0.2-beta
+=============================================================
+1.  Added Smarty-function field. Return modResource field value
+2.  Added Smarty-function tv. Return modTemplateVar value
+3.  Added Smarty-function link. Return $modx->makeUrl();
+4.  Fixed setting modxSmarty.caching
+
+
 modxSmarty-0.0.1-beta
 =============================================================
-
 1. Created core
 2. Created plugin Smarty initialization and clearing cache

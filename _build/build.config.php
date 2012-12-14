@@ -13,7 +13,7 @@ define('NAMESPACE_NAME', PKG_NAME_LOWER);
 define('PKG_PATH', PKG_NAME_LOWER);
 define('PKG_CATEGORY', PKG_NAME);
 
-$pkg_version = '0.0.1';
+$pkg_version = '0.0.2';
 $pkg_release = 'beta';
 define('PKG_VERSION', $pkg_version); 
 define('PKG_RELEASE', $pkg_release); 
@@ -48,7 +48,8 @@ unset($root);
  
 
 require_once MODX_CORE_PATH . 'model/modx/modx.class.php';
-require_once $sources['build'] . '/includes/functions.php';
 
-$modx= new modX();
-$modx->initialize('mgr'); 
+require_once $sources['build'] . 'includes/functions.php';
+
+$modx= new modX(); 
+$modx->initialize('mgr');  
