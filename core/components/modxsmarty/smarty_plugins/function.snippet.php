@@ -10,15 +10,18 @@
 function smarty_function_snippet($params, & $smarty)
 {
     if(!isset($params['name']) OR !$name = $params['name']){return;}
+    if(isset($params['assign']) && $params['assign']){
+        $assign = (string)$params['assign'];
+    }
     
     $modx = & $smarty->modx;
     $modx->getParser(); 
     $scriptProperties = array();
     
-    if(isset($params['scriptProperties'])){
-        $scriptProperties = $params['scriptProperties'];
+    if(isset($params['params'])){
+        $scriptProperties = $params['params'];
         // Check if String
-        if(is_string($params['scriptProperties'])){
+        if(is_string($scriptProperties)){
             $scriptProperties = $modx->parser->parseProperties($scriptProperties);
         }
     }  
@@ -31,7 +34,7 @@ function smarty_function_snippet($params, & $smarty)
         $modx->parser->processElementTags('', $output, true, true, '[[', ']]', array(), $maxIterations);
     }
     
-    return $output;
+    return $assign ? $smarty->assign($assign, $output) : $output;
 }
 
 ?>

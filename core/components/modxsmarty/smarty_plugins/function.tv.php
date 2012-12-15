@@ -10,6 +10,9 @@
 function smarty_function_tv($params, & $smarty)
 {
     if(!isset($params['name']) OR !$name = $params['name']){return '';}
+    if(isset($params['assign']) && $params['assign']){
+        $assign = (string)$params['assign'];
+    }
     $modx = & $smarty->modx;
     
     // Check modResource ID
@@ -39,7 +42,7 @@ function smarty_function_tv($params, & $smarty)
         $modx->parser->processElementTags('', $output, true, true, '[[', ']]', array(), $maxIterations);
     }
     
-    return $output;
+    return $assign ? $smarty->assign($assign, $output) : $output;
 }
 
 ?>

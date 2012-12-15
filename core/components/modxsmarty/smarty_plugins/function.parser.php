@@ -9,13 +9,16 @@
 
 function smarty_function_parser($params, & $smarty)
 {
-    if(!isset($params['content']) OR !$content = $params['content']){return;}
+    if(!isset($params['content']) OR !$output = $params['content']){return;}
+    if(isset($params['assign']) && $params['assign']){
+        $assign = (string)$params['assign'];
+    }
     $modx = & $smarty->modx; 
     $modx->getParser(); 
     $maxIterations= intval($modx->getOption('parser_max_iterations', $options, 10));
-    $modx->parser->processElementTags('', $content, true, false, '[[', ']]', array(), $maxIterations);
-    $modx->parser->processElementTags('', $content, true, true, '[[', ']]', array(), $maxIterations);
-    return $content;
+    $modx->parser->processElementTags('', $output, true, false, '[[', ']]', array(), $maxIterations);
+    $modx->parser->processElementTags('', $output, true, true, '[[', ']]', array(), $maxIterations);
+    return $assign ? $smarty->assign($assign, $output) : $output;
 }
 
 ?>

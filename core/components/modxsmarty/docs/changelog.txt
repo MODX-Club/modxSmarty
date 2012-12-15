@@ -1,3 +1,9 @@
+modxSmarty-0.0.3-beta
+=============================================================
+1.  Added Smarty-param "assign" in all functions
+2.  Smarty params "scriptProperties" for tags "snippet" and "chunk"
+    renamed for "params"
+
 modxSmarty-0.0.2-beta
 =============================================================
 1.  Added Smarty-function field. Return modResource field value
