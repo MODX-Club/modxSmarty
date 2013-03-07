@@ -1,3 +1,8 @@
+modxSmarty-0.0.4-beta
+=============================================================
+1.  Field-function refactored. Now return TV-values available
+2.  Added Smarty-function processor return $modx->runProcessor()
+
 modxSmarty-0.0.3-beta
 =============================================================
 1.  Added Smarty-param "assign" in all functions

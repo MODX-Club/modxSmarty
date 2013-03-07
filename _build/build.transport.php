@@ -6,13 +6,27 @@ $mtime= explode(" ", $mtime);
 $mtime= $mtime[1] + $mtime[0];
 $tstart = $mtime;
 
+$pkg_name = 'modxSmarty';
+    
+/* define package */
+define('PKG_NAME', $pkg_name);
+define('PKG_NAME_LOWER',strtolower(PKG_NAME));
+define('NAMESPACE_NAME', PKG_NAME_LOWER);
+
+define('PKG_PATH', PKG_NAME_LOWER);
+define('PKG_CATEGORY', PKG_NAME);
+
+$pkg_version = '0.0.4';
+$pkg_release = 'beta';
+define('PKG_VERSION', $pkg_version); 
+define('PKG_RELEASE', $pkg_release); 
 
 print '<pre>';
 require_once dirname(__FILE__). '/build.config.php';
 
 
-// $modx= new modX();
-//  $modx->initialize('mgr');
+$modx= new modX();
+$modx->initialize('mgr');
 
 
 $modx->setLogLevel(modX::LOG_LEVEL_INFO);
