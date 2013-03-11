@@ -36,7 +36,6 @@ function smarty_function_processor($params, & $smarty)
         if(is_string($scriptProperties)){
             $modx->getParser(); 
             $scriptProperties = $modx->parser->parseProperties($scriptProperties);
-            print_r($scriptProperties);
         }
     }  
     if(!empty($params['ns'])){
