@@ -1,3 +1,7 @@
+modxSmarty-0.0.5-beta
+=============================================================
+1.  Remove print_r from processor-plugin
+
 modxSmarty-0.0.4-beta
 =============================================================
 1.  Field-function refactored. Now return TV-values available
