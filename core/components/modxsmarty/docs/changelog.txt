@@ -1,3 +1,8 @@
+modxSmarty-0.0.6-beta
+=============================================================
+1.  Added Smarty-plugin lang. Return $modx->lexicon();
+2.  Added Smarty-modifier spell. Example {$var|spell:"year":"years":"years"}
+
 modxSmarty-0.0.5-beta
 =============================================================
 1.  Remove print_r from processor-plugin

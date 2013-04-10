@@ -2,22 +2,8 @@
  
 
 require_once dirname(dirname(dirname(dirname(__FILE__)))).'/core/config/config.inc.php';
+   
   
-$pkg_name = 'modxSmarty';
-    
-/* define package */
-define('PKG_NAME', $pkg_name);
-define('PKG_NAME_LOWER',strtolower(PKG_NAME));
-define('NAMESPACE_NAME', PKG_NAME_LOWER);
-
-define('PKG_PATH', PKG_NAME_LOWER);
-define('PKG_CATEGORY', PKG_NAME);
-
-$pkg_version = '0.0.3';
-$pkg_release = 'beta';
-define('PKG_VERSION', $pkg_version); 
-define('PKG_RELEASE', $pkg_release); 
-
 /* define sources */
 $root = dirname(dirname(__FILE__)).'/';
 
@@ -50,6 +36,4 @@ unset($root);
 require_once MODX_CORE_PATH . 'model/modx/modx.class.php';
 
 require_once $sources['build'] . 'includes/functions.php';
-
-$modx= new modX(); 
-$modx->initialize('mgr');  
+ 
