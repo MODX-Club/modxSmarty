@@ -1,3 +1,9 @@
+modxSmarty-0.0.7-beta
+=============================================================
+1.  Remove echo $num from spell modifier
+2.  Bugfix $assign notices
+3.  Minor processor-plugin code refactoring
+
 modxSmarty-0.0.6-beta
 =============================================================
 1.  Added Smarty-plugin lang. Return $modx->lexicon();

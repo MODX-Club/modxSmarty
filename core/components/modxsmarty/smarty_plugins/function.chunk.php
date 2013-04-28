@@ -10,7 +10,7 @@
 function smarty_function_chunk($params, & $smarty)
 {
     if(!isset($params['name']) OR !$name = $params['name']){return;}
-    if(isset($params['assign']) && $params['assign']){
+    if(!empty($params['assign'])){
         $assign = (string)$params['assign'];
     }
     
@@ -29,12 +29,13 @@ function smarty_function_chunk($params, & $smarty)
     $output = $modx->getChunk($name, $scriptProperties);
     
     if(!isset($params['noparse']) || $params['noparse'] != 'true'){
+        $options = array();
         $maxIterations= intval($modx->getOption('parser_max_iterations', $options, 10));
         $modx->parser->processElementTags('', $output, true, false, '[[', ']]', array(), $maxIterations);
         $modx->parser->processElementTags('', $output, true, true, '[[', ']]', array(), $maxIterations);
     }
     
-    return $assign ? $smarty->assign($assign, $output) : $output;
+    return !empty($assign) ? $smarty->assign($assign, $output) : $output;
 }
 
 ?>

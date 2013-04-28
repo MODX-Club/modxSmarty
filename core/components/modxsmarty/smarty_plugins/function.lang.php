@@ -34,7 +34,7 @@ function smarty_function_lang($params, & $smarty)
     }     
      
     $output = $modx->lexicon($key, $scriptProperties, $language);
-    return $assign ? $smarty->assign($assign, $output) : $output;
+    return !empty($assign) ? $smarty->assign($assign, $output) : $output;
 }
 
 ?>
