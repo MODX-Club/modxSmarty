@@ -1,3 +1,9 @@
+modxSmarty-0.0.8-beta
+=============================================================
+1.  Add empty Smarty compiled directory on SiteRefresh event.
+2.  Add full $modx support in Smarty-templates via tag {$modx}
+
+
 modxSmarty-0.0.7-beta
 =============================================================
 1.  Remove echo $num from spell modifier
