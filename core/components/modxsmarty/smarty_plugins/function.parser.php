@@ -15,8 +15,7 @@ function smarty_function_parser($params, & $smarty)
     }
     $modx = & $smarty->modx; 
     $modx->getParser(); 
-    $options = array();
-    $maxIterations= intval($modx->getOption('parser_max_iterations', $options, 10));
+    $maxIterations= intval($modx->getOption('parser_max_iterations', $params, 10));
     $modx->parser->processElementTags('', $output, true, false, '[[', ']]', array(), $maxIterations);
     $modx->parser->processElementTags('', $output, true, true, '[[', ']]', array(), $maxIterations);
     return !empty($assign) ? $smarty->assign($assign, $output) : $output;

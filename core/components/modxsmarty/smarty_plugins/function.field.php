@@ -15,6 +15,7 @@ function smarty_function_field($params, & $smarty) {
         $assign = (string)$params['assign'];
     }
     $output = '';
+    $tagPropString = (isset($params['tagPropString']) ? $params['tagPropString'] : "");
     $modx = & $smarty->modx;
     $modx->getParser();
     $nextToken = substr($tagName, 0, 1);

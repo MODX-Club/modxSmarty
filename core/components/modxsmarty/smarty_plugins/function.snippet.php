@@ -29,7 +29,7 @@ function smarty_function_snippet($params, & $smarty)
     $output = $modx->runSnippet($name, $scriptProperties);
 
     if(isset($params['parse']) && $params['parse'] == 'true'){
-        $maxIterations= intval($modx->getOption('parser_max_iterations', $options, 10));
+        $maxIterations= intval($modx->getOption('parser_max_iterations', $params, 10));
         $modx->parser->processElementTags('', $output, true, false, '[[', ']]', array(), $maxIterations);
         $modx->parser->processElementTags('', $output, true, true, '[[', ']]', array(), $maxIterations);
     }

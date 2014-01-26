@@ -16,7 +16,7 @@ define('NAMESPACE_NAME', PKG_NAME_LOWER);
 define('PKG_PATH', PKG_NAME_LOWER);
 define('PKG_CATEGORY', PKG_NAME);
 
-$pkg_version = '0.0.8';
+$pkg_version = '0.0.9';
 $pkg_release = 'beta';
 define('PKG_VERSION', $pkg_version); 
 define('PKG_RELEASE', $pkg_release); 
@@ -114,6 +114,15 @@ else{
 
 unset($plugins,$plugin,$attributes);
 
+/* add snippets */
+$snippets = include $sources['data'].'transport.snippets.php';
+if (!is_array($snippets)) {
+    $modx->log(modX::LOG_LEVEL_ERROR,'Could not package in snippets.');
+} else {
+    $category->addMany($snippets);
+    $modx->log(modX::LOG_LEVEL_INFO,'Packaged in '.count($snippets).' snippets.');
+}
+unset($snippets);
 
 
 /* load system settings */
