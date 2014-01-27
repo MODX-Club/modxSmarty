@@ -26,14 +26,15 @@ switch($modx->event->name){
         $modx->getService('smarty', 'smarty.modSmarty', '', $config);
         $modx->smarty->addPluginsDir($plugins_dir);
         $modx->smarty->assign('modx', $modx);
+        $modx->smarty->assign('template_url', $modx->getOption('modxSite.template_url'). $template .'/');
         break;
     
     case 'OnSiteRefresh':
         $modx->setOption('extensions', array('.tpl.php'));
-        $modx->cacheManager->deleteTree(dirname($config['cache_dir']), array(
+        $modx->cacheManager->deleteTree($config['cache_dir'], array(
             'extensions' => array('.tpl.php'),
         ));
-        $modx->cacheManager->deleteTree(dirname($config['compile_dir']), array(
+        $modx->cacheManager->deleteTree($config['compile_dir'], array(
             'extensions' => array('.tpl.php'),
         ));
         break;

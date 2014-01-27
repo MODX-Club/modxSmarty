@@ -1,8 +1,14 @@
+modxSmarty-0.0.10-beta
+=============================================================
+1.  Added $template_url in modxSmarty plugin
+
+
 modxSmarty-0.0.9-beta
 =============================================================
 1.  Added pagination function. Thanks for Sergey Shlyahov @Husband!
 2.  Added snippet smarty.
 3.  Minor bugfixes.
+
 
 modxSmarty-0.0.8-beta
 =============================================================
