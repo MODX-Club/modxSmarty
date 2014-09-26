@@ -43,7 +43,7 @@ return $modx->getOption('site_name')
 Placeholder
 ===================
 
-{px name="configName"}
+{ph name="configName"}
 Field
 
 {field name="modResourceFieldName"}
