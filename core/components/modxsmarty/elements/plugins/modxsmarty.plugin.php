@@ -31,10 +31,10 @@ switch($modx->event->name){
     
     case 'OnSiteRefresh':
         $modx->setOption('extensions', array('.tpl.php'));
-        $modx->cacheManager->deleteTree($config['cache_dir'], array(
+        $modx->cacheManager->deleteTree(dirname($config['cache_dir']), array(
             'extensions' => array('.tpl.php'),
         ));
-        $modx->cacheManager->deleteTree($config['compile_dir'], array(
+        $modx->cacheManager->deleteTree(dirname($config['compile_dir']), array(
             'extensions' => array('.tpl.php'),
         ));
         break;
