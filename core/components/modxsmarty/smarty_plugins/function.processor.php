@@ -67,6 +67,8 @@ function smarty_function_processor($params, & $smarty)
             $output['success'] = true;
         }
     }
+    
+    $modx->error->reset();
 
     return !empty($assign) ? $smarty->assign($assign, $output) : $output;
 }
