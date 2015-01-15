@@ -33,8 +33,14 @@ function smarty_function_snippet($params, & $smarty)
         $modx->parser->processElementTags('', $output, true, false, '[[', ']]', array(), $maxIterations);
         $modx->parser->processElementTags('', $output, true, true, '[[', ']]', array(), $maxIterations);
     }
-
-    return !empty($assign) ? $smarty->assign($assign, $output) : $output;
+    
+    if(!empty($assign)){
+        $smarty->assign($assign, $output);
+        return;
+    }
+    
+    // else
+    return $output;
 }
 
 ?>

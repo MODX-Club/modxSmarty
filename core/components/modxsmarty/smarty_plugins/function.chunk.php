@@ -34,7 +34,13 @@ function smarty_function_chunk($params, & $smarty)
         $modx->parser->processElementTags('', $output, true, true, '[[', ']]', array(), $maxIterations);
     }
     
-    return !empty($assign) ? $smarty->assign($assign, $output) : $output;
+    if(!empty($assign)){
+        $smarty->assign($assign, $output);
+        return;
+    }
+    
+    // else
+    return $output;
 }
 
 ?>

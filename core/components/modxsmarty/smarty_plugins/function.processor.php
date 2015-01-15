@@ -69,6 +69,12 @@ function smarty_function_processor($params, & $smarty)
     }
     
     $modx->error->reset();
-
-    return !empty($assign) ? $smarty->assign($assign, $output) : $output;
+    
+    if(!empty($assign)){
+        $smarty->assign($assign, $output);
+        return;
+    }
+    
+    // else
+    return $output;
 }

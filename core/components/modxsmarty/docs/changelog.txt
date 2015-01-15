@@ -1,3 +1,10 @@
+modxSmarty-1.0.0-beta
+=============================================================
+1. Added Smarty lib v3.1.20
+2. Multy templates support
+3. Minor bugfix
+
+
 modxSmarty-0.0.10-beta
 =============================================================
 1.  Added $template_url in modxSmarty plugin

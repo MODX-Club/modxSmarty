@@ -14,7 +14,14 @@ function smarty_function_config($params, & $smarty)
         $assign = (string)$params['assign'];
     }
     $output = $smarty->modx->getOption($name, null);
-    return !empty($assign) ? $smarty->assign($assign, $output) : $output;
+    
+    if(!empty($assign)){
+        $smarty->assign($assign, $output);
+        return;
+    }
+    
+    // else
+    return $output;
 }
 
 ?>

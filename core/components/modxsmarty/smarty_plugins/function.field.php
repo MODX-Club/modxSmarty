@@ -33,8 +33,14 @@ function smarty_function_field($params, & $smarty) {
         $element->setCacheable($cacheable);
         $output = $element->process($tagPropString);
     }
-
-    return !empty($assign) ? $smarty->assign($assign, $output) : $output;
+    
+    if(!empty($assign)){
+        $smarty->assign($assign, $output);
+        return;
+    }
+    
+    // else
+    return $output;
 }
 
 ?>

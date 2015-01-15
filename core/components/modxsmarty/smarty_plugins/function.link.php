@@ -14,7 +14,14 @@ function smarty_function_link($params, & $smarty)
         $assign = (string)$params['assign'];
     }
     $output = $smarty->modx->makeUrl($id);
-    return !empty($assign) ? $smarty->assign($assign, $output) : $output;
+    
+    if(!empty($assign)){
+        $smarty->assign($assign, $output);
+        return;
+    }
+    
+    // else
+    return $output;
 }
 
 ?>

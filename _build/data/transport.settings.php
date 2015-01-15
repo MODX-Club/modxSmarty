@@ -48,6 +48,16 @@ $settings['modxSmarty.template']->fromArray(array(
 ),'',true,true);
 
 
+$settings['modxSmarty.pre_template'] = $modx->newObject('modSystemSetting');
+$settings['modxSmarty.pre_template']->fromArray(array(
+    'key' => 'modxSmarty.pre_template',
+    'value' => '',
+    'xtype' => 'textfield',
+    'namespace' => 'modxsmarty',
+    'area' => 'site',
+),'',true,true);
+
+
 $settings['modxSmarty.caching'] = $modx->newObject('modSystemSetting');
 $settings['modxSmarty.caching']->fromArray(array(
     'key' => 'modxSmarty.caching',
