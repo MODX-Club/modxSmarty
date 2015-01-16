@@ -5,7 +5,10 @@ $core_path = $modx->getOption('modxSmarty.core_path', $scriptProperties, $modx->
 $template_dir = $modx->getOption('modxSmarty.template_dir', $scriptProperties, $core_path.'templates/');
 $template = $modx->getOption('modxSmarty.template', $scriptProperties, 'default');
 $cache_dir = $modx->getOption('modxSmarty.cache_dir', $scriptProperties, $modx->getOption('core_path', null).'cache/modxsmarty/');
-$compile_dir = $modx->getOption('modxSmarty.compile_dir', $scriptProperties, "{$core_path}compiled/{$template}/");
+
+if(!$compile_dir = $modx->getOption('modxSmarty.compile_dir', $scriptProperties, null)){
+    $compile_dir = "{$core_path}compiled/";
+}
 
 $config = array(
     'template_dir'      => $template_dir."{$template}/",
@@ -34,8 +37,8 @@ switch($modx->event->name){
         
         $templates['main'] = $template_dir."{$template}/";  
         
-        $modx->smarty->setTemplateDir($templates);
-        $smarty->setCompileDir($config['compile_dir']. $modx->context->key. "/");
+        $smarty->setTemplateDir($templates);
+        $smarty->setCompileDir($config['compile_dir']. "{$template}/". $modx->context->key. "/");
         
         /*
             http://www.smarty.net/forums/viewtopic.php?p=87138&sid=03237308442c46664f9a5a80353eb277#87138
@@ -61,6 +64,7 @@ switch($modx->event->name){
         $modx->cacheManager->deleteTree($config['compile_dir'], array(
             'extensions' => array('.tpl.php'),
         ));
+        
         break;
     
     default:;
