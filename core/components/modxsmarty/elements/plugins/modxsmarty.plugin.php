@@ -21,7 +21,10 @@ $config = array(
 switch($modx->event->name){
     case 'OnHandleRequest':
         
-        if($modx->context->key == 'mgr'){
+        if(
+          $modx->context->key == 'mgr')
+          OR (isset($modx->smarty) && is_object($modx->smarty))
+        {
             return;
         }
         
