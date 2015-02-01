@@ -22,26 +22,31 @@ switch($modx->event->name){
     case 'OnHandleRequest':
         
         if(
-          $modx->context->key == 'mgr')
-          OR (isset($modx->smarty) && is_object($modx->smarty))
-        {
+            $modx->context->key == 'mgr'
+            OR (isset($modx->smarty) && is_object($modx->smarty))
+        ){
             return;
         }
         
         $smarty = $modx->getService('smarty', 'modxSmarty', MODX_CORE_PATH . 'components/modxsmarty/model/modxSmarty/', $config);
             
         $templates = array();
-            
+        
+        $templates['main'] = $template_dir."{$template}/"; 
+        
+        $_compile_dir = "{$template}/";
+        
         if($pre_template = $modx->getOption('modxSmarty.pre_template', null, false)){
             $templates['prepend'] = $template_dir."{$pre_template}/";
             $modx->smarty->assign('pre_template', $pre_template);
             $modx->smarty->assign('pre_template_url', $modx->getOption('modxSite.template_url'). $pre_template .'/');
-        }
+            $_compile_dir .= "{$pre_template}/";
+        } 
         
-        $templates['main'] = $template_dir."{$template}/";  
+        $_compile_dir .= $modx->context->key. "/";
         
         $smarty->setTemplateDir($templates);
-        $smarty->setCompileDir($config['compile_dir']. "{$template}/". $modx->context->key. "/");
+        $smarty->setCompileDir($config['compile_dir']. $_compile_dir);
         
         /*
             http://www.smarty.net/forums/viewtopic.php?p=87138&sid=03237308442c46664f9a5a80353eb277#87138
