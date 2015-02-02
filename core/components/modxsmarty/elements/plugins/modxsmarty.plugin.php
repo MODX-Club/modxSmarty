@@ -32,8 +32,6 @@ switch($modx->event->name){
             
         $templates = array();
         
-        $templates['main'] = $template_dir."{$template}/"; 
-        
         $_compile_dir = "{$template}/";
         
         if($pre_template = $modx->getOption('modxSmarty.pre_template', null, false)){
@@ -45,6 +43,7 @@ switch($modx->event->name){
         
         $_compile_dir .= $modx->context->key. "/";
         
+        $templates['main'] = $template_dir."{$template}/"; 
         $smarty->setTemplateDir($templates);
         $smarty->setCompileDir($config['compile_dir']. $_compile_dir);
         
