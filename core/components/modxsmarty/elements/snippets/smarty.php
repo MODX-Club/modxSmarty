@@ -3,4 +3,4 @@ foreach($scriptProperties as $key => $value){
     $modx->smarty->assign($key, $value);
 }
 
-return $modx->smarty->fetch($tpl);
+return preg_replace("/[ \r\n\t]+$/sm", "", $modx->smarty->fetch($tpl));
